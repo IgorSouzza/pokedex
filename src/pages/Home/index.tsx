@@ -32,18 +32,20 @@ const Home = () => {
     const prev = result.data.previous || '';
     const next = result.data.next || '';
 
-    setPokemons(result.data.results)
+    const newPokemons = pokemons?.concat(result.data.results);
+    setPokemons(newPokemons);
+
     setPagination({
       next: next.split('?')[1],
       previous: prev.split('?')[1],
     });
-
-    console.log(result);
-  }, [pagination.next]);
+  }, [pagination.next, pokemons]);
 
   return (
     <Container>
-      {pokemons?.map((pokemon) => <Card key={pokemon.name} pokemon={pokemon} />)}
+      {pokemons?.map((pokemon) =>
+        <Card key={pokemon.name} pokemon={pokemon} />
+      )}
       <button type="button" onClick={nextPage}>Ver mais</button>
     </Container>
   );
