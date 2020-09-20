@@ -8,4 +8,9 @@ export const Container = styled.button`
   cursor: pointer;
   font-size: 12px;
   padding: 5px 10px;
+  transition: 0.5s ease;
+
+  &:hover {
+    background: var(--color-blue-dark);
+  }
 `;

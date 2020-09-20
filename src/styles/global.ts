@@ -9,6 +9,7 @@ export default createGlobalStyle`
     --color-card-bg: #FFC107;
     --color-card-img: #4CAF50;
     --color-blue: #03A9F4;
+    --color-blue-dark: #0376ab;
     --font-family-primary: Helvetica, sans-serif;
   }
 
