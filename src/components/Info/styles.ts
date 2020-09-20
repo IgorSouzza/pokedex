@@ -35,6 +35,11 @@ export const Content = styled.div`
   padding: 8px;
   position: relative;
 
-  height: 200px;
-  width: 150px;
+  height: 100vh;
+  width: 100vw;
+
+  @media (min-width: 901px) {
+    height: 50vh;
+    width: 50vw;
+  }
 `;
