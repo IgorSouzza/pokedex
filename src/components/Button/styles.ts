@@ -5,6 +5,7 @@ export const Container = styled.button`
   border: none;
   border-radius: 4px;
   color: var(--color-white);
+  cursor: pointer;
   font-size: 12px;
   padding: 5px 10px;
 `;

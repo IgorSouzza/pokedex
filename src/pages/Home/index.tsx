@@ -6,7 +6,7 @@ import { ApiResponse } from 'models/api.model';
 
 import { usePokemon } from 'hooks/processPokemon';
 
-import { Container } from './styles';
+import { Container, PokemonContainer } from './styles';
 
 import Card from 'components/Card';
 import Button from 'components/Button';
@@ -48,9 +48,11 @@ const Home = () => {
 
   return (
     <Container>
-      {pokemons?.map((pokemon) =>
-        <Card key={pokemon.name} pokemon={pokemon} />
-      )}
+      <PokemonContainer>
+        {pokemons?.map((pokemon) =>
+          <Card key={pokemon.name} pokemon={pokemon} />
+        )}
+      </PokemonContainer>
       <Button onClick={nextPage}>Ver mais</Button>
     </Container>
   );
