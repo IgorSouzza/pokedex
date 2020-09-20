@@ -4,13 +4,16 @@ import api from 'services/api';
 import { Pokemon } from 'models/pokemon.model';
 import { ApiResponse } from 'models/api.model';
 
+import { usePokemon } from 'hooks/processPokemon';
+
 import { Container } from './styles';
 
 import Card from 'components/Card';
+import Button from 'components/Button';
 
 const Home = () => {
-  const [pokemons, setPokemons] = useState<Pokemon[]>();
   const [pagination, setPagination] = useState({ next: '', previous: '' });
+  const { setPokemons, pokemons } = usePokemon();
 
   useEffect(() => {
     document.title = 'Poke List';
@@ -25,7 +28,7 @@ const Home = () => {
         previous: prev.split('?')[1],
       });
     });
-  }, []);
+  }, [setPokemons]);
 
   const nextPage = useCallback(async () => {
     const result = await api.get<ApiResponse<Pokemon>>(`/pokemon?${pagination.next}`);
@@ -33,20 +36,22 @@ const Home = () => {
     const next = result.data.next || '';
 
     const newPokemons = pokemons?.concat(result.data.results);
-    setPokemons(newPokemons);
 
+    if (!newPokemons) return;
+
+    setPokemons(newPokemons);
     setPagination({
       next: next.split('?')[1],
       previous: prev.split('?')[1],
     });
-  }, [pagination.next, pokemons]);
+  }, [pagination.next, pokemons, setPokemons]);
 
   return (
     <Container>
       {pokemons?.map((pokemon) =>
         <Card key={pokemon.name} pokemon={pokemon} />
       )}
-      <button type="button" onClick={nextPage}>Ver mais</button>
+      <Button onClick={nextPage}>Ver mais</Button>
     </Container>
   );
 }

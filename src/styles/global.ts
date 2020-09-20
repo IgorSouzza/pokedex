@@ -5,6 +5,10 @@ import Background from 'assets/background.jpg';
 export default createGlobalStyle`
   :root {
     --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-card-bg: #FFC107;
+    --color-card-img: #4CAF50;
+    --color-blue: #03A9F4;
     --font-family-primary: Helvetica, sans-serif;
   }
 

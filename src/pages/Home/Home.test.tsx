@@ -1,8 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
-import App from 'App';
+import { render, fireEvent } from '@testing-library/react';
+import Home from './index';
 
-test('renders learn react link', async () => {
-  await render(<App />);
-  expect(document.title).toEqual("Poke List");
+const nextPage = jest.fn();
+
+describe('Home', () => {
+  it('should be able to load more pokemons', async () => {
+    const { getByText } = render(<Home />);
+
+    const buttonElement = getByText('Ver mais');
+
+    fireEvent.click(buttonElement);
+
+    expect(nextPage).toHaveBeenCalledTimes(1);
+  });
 });

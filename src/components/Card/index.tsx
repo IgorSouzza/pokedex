@@ -5,10 +5,14 @@ import { Pokemon } from 'models/pokemon.model';
 
 import { Container } from './styles';
 
+import Button from 'components/Button';
+
 const Card: React.FC<CardProps<Pokemon>> = ({ pokemon }) => {
   return (
     <Container>
-      <h1>{pokemon.name}</h1>
+      <img src={pokemon.icon} alt="Imagem do pokemon"/>
+      <p>Nome: {pokemon.name}</p>
+      <Button>Detalhes</Button>
     </Container>
   );
 };
