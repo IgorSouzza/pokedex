@@ -16,18 +16,23 @@ const Home = () => {
   const { setPokemons, pokemons } = usePokemon();
 
   useEffect(() => {
+    let isMounted = true;
     document.title = 'Poke List';
 
     api.get<ApiResponse<Pokemon>>('/pokemon').then((res) => {
-      const prev = res.data.previous || '';
-      const next = res.data.next || '';
+      if (isMounted) {
+        const prev = res.data.previous || '';
+        const next = res.data.next || '';
 
-      setPokemons(res.data.results);
-      setPagination({
-        next: next.split('?')[1],
-        previous: prev.split('?')[1],
-      });
+        setPokemons(res.data.results);
+        setPagination({
+          next: next.split('?')[1],
+          previous: prev.split('?')[1],
+        });
+      }
     });
+
+    return () => { isMounted = false };
   }, [setPokemons]);
 
   const nextPage = useCallback(async () => {

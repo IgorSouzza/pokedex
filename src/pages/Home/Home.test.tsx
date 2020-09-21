@@ -4,7 +4,10 @@ import Home from './index';
 
 describe('Home', () => {
   it('should be able to have title', async () => {
-    render(<Home />);
+    act(() => {
+      render(<Home />);
+    });
+
     await waitFor(() => expect(document.title).toEqual("Poke List"));
   });
 
