@@ -22,6 +22,10 @@ export const Container = styled.div`
 
   p {
     margin-top: 8px;
+
+    span {
+      text-transform: capitalize;
+    }
   }
 
   button {
