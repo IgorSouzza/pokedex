@@ -6,7 +6,7 @@ import '@testing-library/jest-dom/extend-expect';
 import { rest } from 'msw';
 import { setupServer } from 'msw/node';
 
-const server = setupServer(
+export const server = setupServer(
   rest.get('https://pokeapi.co/api/v2/pokemon', (req, res, ctx) => {
     // Respond with a mocked user token that gets persisted
     // in the `sessionStorage` by the `Login` component.

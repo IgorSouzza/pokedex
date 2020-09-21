@@ -21,7 +21,7 @@ const Card: React.FC<CardProps<Pokemon>> = ({ pokemon }) => {
     <Container>
       <img src={pokemon.icon} alt="Imagem do pokemon"/>
       <p>Nome: {pokemon.name}</p>
-      <Info ref={modalRef}>Em breve</Info>
+      <Info ref={modalRef} data-testid="card-modal">Em breve</Info>
       <Button onClick={handleOpenModal}>Detalhes</Button>
     </Container>
   );

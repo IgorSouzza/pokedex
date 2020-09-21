@@ -16,7 +16,7 @@ interface ModalProps {
 }
 
 const Modal: React.RefForwardingComponent<ModalHandles, ModalProps> = (
-  { children },
+  { children, ...rest },
   ref,
 ) => {
   const [visible, setVisible] = useState(false);
@@ -44,7 +44,7 @@ const Modal: React.RefForwardingComponent<ModalHandles, ModalProps> = (
   }
 
   return (
-    <Container style={{ top: windowPosition }}>
+    <Container style={{ top: windowPosition }} {...rest}>
       <Content>
         <button type="button" onClick={handleCloseModal} className="close">
           X

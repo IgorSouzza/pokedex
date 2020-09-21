@@ -1,17 +1,24 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitFor, act } from '@testing-library/react';
 import Home from './index';
 
-const nextPage = jest.fn();
-
 describe('Home', () => {
+  it('should be able to have title', async () => {
+    render(<Home />);
+    await waitFor(() => expect(document.title).toEqual("Poke List"));
+  });
+
   it('should be able to load more pokemons', async () => {
-    const { getByText } = render(<Home />);
+    const { getByTestId, getByText } = render(<Home />);
 
     const buttonElement = getByText('Ver mais');
 
-    fireEvent.click(buttonElement);
+    act(() => {
+      fireEvent.click(buttonElement);
+    });
 
-    expect(nextPage).toHaveBeenCalledTimes(1);
+    const pokemonListElement = getByTestId('pokemonlist');
+
+    await waitFor(() => expect(pokemonListElement.children).toHaveLength(20));
   });
 });
