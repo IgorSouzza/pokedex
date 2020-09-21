@@ -7,6 +7,8 @@ import React, {
 
 import { Container, Content } from './styles';
 
+import Button from 'components/Button';
+
 export interface ModalHandles {
   openModal: () => void;
 }
@@ -46,9 +48,9 @@ const Modal: React.RefForwardingComponent<ModalHandles, ModalProps> = (
   return (
     <Container style={{ top: windowPosition }} {...rest}>
       <Content>
-        <button type="button" onClick={handleCloseModal} className="close">
+        <Button type="button" onClick={handleCloseModal} className="close">
           X
-        </button>
+        </Button>
         <p>{children}</p>
       </Content>
     </Container>

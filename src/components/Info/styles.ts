@@ -17,11 +17,6 @@ export const Container = styled.div`
     position: absolute;
     top: 0px;
     right: 10px;
-
-    border: none;
-    background: none;
-    color: var(--color-blue);
-    cursor: pointer;
     font-weight: bold;
   }
 `;
